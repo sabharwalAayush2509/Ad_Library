@@ -11,19 +11,35 @@
         android:id="@+id/bannerAd"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintBottom_toTopOf="@+id/bannerAdText"
+        app:layout_constraintBottom_toTopOf="@+id/bannerAdTextLayout"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/bannerAdText"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:id="@+id/bannerAdTextLayout"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Banner Ad"
-        android:textSize="28sp"
-        android:textStyle="bold"
+        android:gravity="center"
+        android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/bannerAd" />
+        app:layout_constraintTop_toBottomOf="@id/bannerAd">
+
+        <TextView
+            android:id="@+id/bannerAdText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Banner Ad"
+            android:textSize="28sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/bannerAdText2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="14dp"
+            android:layout_marginTop="7dp"
+            android:text="Banner ads are rectangular image or text ads that occupy a small portion of the app’s layout. They stay on screen while users interact with the app, typically displayed at the top or bottom of the screen."
+            android:textAlignment="center" />
+
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

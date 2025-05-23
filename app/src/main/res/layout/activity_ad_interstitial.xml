@@ -7,15 +7,29 @@
     android:layout_height="match_parent"
     tools:context=".InterstitialAdActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Interstitial Ad"
-        android:textSize="28sp"
-        android:textStyle="bold"
+        android:gravity="center"
+        android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Interstitial Ad"
+            android:textSize="28sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="14dp"
+            android:layout_marginTop="7dp"
+            android:text="Interstitial ads are full-screen ads that cover the entire app interface. They are shown at natural transition points in the app flow, such as between levels or during a pause."
+            android:textAlignment="center" />
+
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

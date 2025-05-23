@@ -41,6 +41,7 @@ android {
 
 dependencies {
     implementation(project(":Ad_Library"))
+//    implementation(libs.ad.library)
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
