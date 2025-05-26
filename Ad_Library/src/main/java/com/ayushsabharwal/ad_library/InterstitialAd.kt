@@ -125,15 +125,24 @@ object InterstitialAd {
                 }
 
                 val handler = Handler(Looper.getMainLooper())
+                var skipShown = false
 
                 val updateCountdown = object : Runnable {
                     override fun run() {
                         val duration = player.duration
                         val position = player.currentPosition
                         val remaining = duration - position
+
                         if (duration > 0 && remaining > 0) {
                             val seconds = TimeUnit.MILLISECONDS.toSeconds(remaining)
                             countdownText.text = "Ad ends in $seconds s"
+
+                            // Show skip after 5 seconds of actual playback
+                            if (!skipShown && position >= 5000) {
+                                skipButton.visibility = View.VISIBLE
+                                skipShown = true
+                            }
+
                             handler.postDelayed(this, 100)
                         } else {
                             skipButton.visibility = View.GONE
@@ -143,15 +152,10 @@ object InterstitialAd {
                     }
                 }
 
-                val showSkip = Runnable {
-                    skipButton.visibility = View.VISIBLE
-                }
-
                 player.addListener(object : Player.Listener {
                     override fun onPlaybackStateChanged(state: Int) {
                         if (state == Player.STATE_READY) {
                             handler.post(updateCountdown)
-                            handler.postDelayed(showSkip, 5000)
                         } else if (state == Player.STATE_ENDED) {
                             countdownText.visibility = View.GONE
                             closeButton.visibility = View.VISIBLE
@@ -160,7 +164,7 @@ object InterstitialAd {
                 })
 
             } catch (e: Exception) {
-                Toast.makeText(context, "An error has occurred can't load ad", Toast.LENGTH_LONG)
+                Toast.makeText(context, "An error has occurred, can't load ad", Toast.LENGTH_LONG)
                     .show()
                 e.printStackTrace()
             }

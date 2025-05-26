@@ -45,7 +45,7 @@ class BannerAd @JvmOverloads constructor(
                 }
 
             } catch (e: Exception) {
-                Toast.makeText(context, "An error has occurred can't load ad", Toast.LENGTH_LONG)
+                Toast.makeText(context, "An error has occurred, can't load ad", Toast.LENGTH_LONG)
                     .show()
                 e.printStackTrace()
             }
